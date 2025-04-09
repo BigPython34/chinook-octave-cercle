@@ -17,6 +17,6 @@ class Track(models.Model):
     milliseconds = models.IntegerField()
     bytes = models.IntegerField()
     unitPrice = models.DecimalField(max_digits=10, decimal_places=3)
-    album = models.ForeignKey(Album, on_delete=models.CASCADE)
+    album = models.ForeignKey(Album, related_name='tracks', on_delete=models.CASCADE)
 
 

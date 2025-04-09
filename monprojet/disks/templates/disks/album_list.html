@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Albums</title>
+</head>
+<body>
+    <h1>Liste des Albums</h1>
+
+    <!-- Formulaire de recherche -->
+    <form method="GET" action="{% url 'disks:album_list' %}">
+        <input type="text" name="q" value="{{ query }}" placeholder="Rechercher un album...">
+        <button type="submit">Rechercher</button>
+    </form>
+
+    {% if albums %}
+        <h2>Résultats de recherche pour "{{ query }}"</h2>
+        <ul>
+            {% for album in albums %}
+                <li>
+                    <a href="{% url 'disks:album_detail' album.id %}">{{ album.title }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>Aucun album trouvé pour "{{ query }}".</p>
+        <h2>Liste complète des albums</h2>
+        <ul>
+            {% for album in albums %}
+                <li>
+                    <a href="{% url 'disks:album_detail' album.id %}">{{ album.title }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
+</body>
+</html>

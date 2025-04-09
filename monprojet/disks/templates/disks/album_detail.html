@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Détails de l'album - {{ album.title }}</title>
+</head>
+<body>
+    <h1>{{ album.title }}</h1>
+    <h2>Liste des Titres</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Titre</th>
+                <th>Auteur</th>
+                <th>Durée</th>
+                <th>Prix Unitaire</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for track in tracks %}
+                <tr>
+                    <td>{{ track.name}}</td>
+                    <td>{{ track.composer }}</td>
+                    <td>{{ track.milliseconds }}</td>
+                    <td>{{ track.unitPrice }} €</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <br>
+    <a href="{% url 'disks:album_list' %}">Retour à la liste des albums</a>
+</body>
+</html>
